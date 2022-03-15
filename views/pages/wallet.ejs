@@ -9,11 +9,11 @@
 <%- include ("../partials/nav.ejs") %>
 
 <div class="container">
-<h2>Database Results</h2>
+<h2>Database Results: <%= results.length %>  <%= typeof(results) %>, <%= typeof(results[0][0]) %> </h2>
 
 <ul>
     <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.walletBalance %></li>
+        <li><%= r.id %> - <%= r.walletbalance %></li>
     <% }); %>
 </ul>
 

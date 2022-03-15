@@ -6,7 +6,7 @@ const { resolve } = require('path');
 const cool = require('cool-ascii-faces');
 
 const SteamAPI = require('steamapi');
-const steam  = new SteamAPI('9C2F8B579B777036AD7B17C6A5BEC8FA')
+const steam  = new SteamAPI('process.env.STEAMAPI')
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -66,8 +66,6 @@ express()
     }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-console.log('post-listen message');
 
 showTimes = () => {
   let result = '';
