@@ -57,6 +57,7 @@ express()
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM wallet_balances');
       const results = { 'results': (result) ? result.rows : null};
+      console.log(results);
       res.render('pages/wallet', results );
       client.release();
     } catch (err) {
