@@ -57,7 +57,7 @@ express()
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM wallet_balances');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      res.render('pages/wallet', results );
       client.release();
     } catch (err) {
       console.error(err);
@@ -70,7 +70,7 @@ console.log('post-listen message');
 
 showTimes = () => {
   let result = '';
-  const times = process.env.TIMES || 5;
+  const times = process.env.TIMES || 5;   
   for (i = 0; i < times; i++) {
     result += i + ' ';
   }
