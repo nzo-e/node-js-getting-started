@@ -2,22 +2,20 @@
 <html>
 <head>
   <%- include ("../partials/header.ejs") %>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/database.css" />
 </head>
 
 <body>
 
 <%- include ("../partials/nav.ejs") %>
 
-<div class="container">
-<h2>Database Results: <%= results.length %>  <%= typeof(results) %>, <%= typeof(results[0][0]) %> </h2>
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.walletbalance %></li>
-    <% }); %>
-</ul>
-
+<div class ="timesocket">
+  <%- include ("../partials/sockettime.ejs") %>
 </div>
+
+<hr>
+<%- include ("../partials/expenditure.ejs") %>
 
 </body>
 </html>
