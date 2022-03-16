@@ -16,7 +16,7 @@ const pool = new Pool({
   }
 });
 
-express()
+const server = express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
@@ -65,6 +65,7 @@ express()
       res.send("Error " + err);
     }
   })
+  .get('/sockettime', (req, res) => res.render('pages/sockettime'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 showTimes = () => {
@@ -75,3 +76,13 @@ showTimes = () => {
   }
   return result;
 }
+
+const socketIO = require('socket.io');
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
+});
+
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
